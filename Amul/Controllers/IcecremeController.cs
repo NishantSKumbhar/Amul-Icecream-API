@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Amul.Models.Domain;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Amul.Controllers
@@ -7,5 +8,10 @@ namespace Amul.Controllers
     [ApiController]
     public class IcecremeController : ControllerBase
     {
+        [HttpGet]
+        public async Task<ActionResult<List<Icecream>>> GetAllIcecreams()
+        {
+            return Ok();
+        }
     }
 }
