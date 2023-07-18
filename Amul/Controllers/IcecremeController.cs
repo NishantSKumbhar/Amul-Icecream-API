@@ -25,10 +25,13 @@ namespace Amul.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<IcecreamSendDTO>>> GetAllIcecreams()
+        public async Task<ActionResult<List<IcecreamSendDTO>>> GetAllIcecreams(
+            [FromQuery] string? filterOn, [FromQuery] string? filterQuery,
+            [FromQuery] string? sortBy, [FromQuery] bool? isAscending,
+            [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 100)
         {
             //var Icecreams = await amulDbContext.Icecreams.Include("Category").ToListAsync();
-            var IcecreamsModel = await icecreamRepository.GetAllIcecreamsAsync();
+            var IcecreamsModel = await icecreamRepository.GetAllIcecreamsAsync(filterOn, filterQuery, sortBy, isAscending ?? true, pageNumber, pageSize);
             
             if(IcecreamsModel == null)
             {
