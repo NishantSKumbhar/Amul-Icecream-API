@@ -4,6 +4,7 @@ using Amul.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Amul.Migrations
 {
     [DbContext(typeof(AmulDbContext))]
-    partial class AmulDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230717135900_Seeding")]
+    partial class Seeding
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -96,41 +99,6 @@ namespace Amul.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Icecreams");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("0fe7d888-a10a-4c0d-af0c-8ab292451cb1"),
-                            CategoryId = new Guid("771ee197-0f61-4fbf-994b-9772393fbbdc"),
-                            Description = "Ingredients ; 3 liters Milk , (I use 2% fat) ; 1/2 cup Sugar ; 1 teaspoon Saffron strands ; 2 teaspoons Cardamom Powder (Elaichi) ",
-                            ImageUrl = "https://static.toiimg.com/photo/84786580.cms",
-                            IsAvailable = true,
-                            Name = "Kesar Pista",
-                            Price = 30,
-                            Quantity = "120ml"
-                        },
-                        new
-                        {
-                            Id = new Guid("f7847a7a-1b5a-4e7f-8306-41bedff26b30"),
-                            CategoryId = new Guid("771ee197-0f61-4fbf-994b-9772393fbbdc"),
-                            Description = "The classic combination of Chocolate and Vanilla, made better with a Wafer Biscuit Cone. That sounds like a dream come true!",
-                            ImageUrl = "https://www.havmor.com/sites/default/files/styles/502x375/public/gallery/Choco%20Vanilla_0.webp?itok=7JCWx_ug",
-                            IsAvailable = true,
-                            Name = "CHOCO VANILLA",
-                            Price = 35,
-                            Quantity = "120ml., 40ml"
-                        },
-                        new
-                        {
-                            Id = new Guid("94d81027-a2f6-4edf-b313-f1ff1d46b65f"),
-                            CategoryId = new Guid("771ee197-0f61-4fbf-994b-9772393fbbdc"),
-                            Description = "Ingredients :Half Liter Milk1 Cup Whipping Cream Half Cup SugarBadam, Pista - 100 GramsPinch of Cardamom Powder Pinch of Food ColorMusic",
-                            ImageUrl = "https://www.factoryrates.in/wp-content/uploads/2021/09/IC-Tricone-Pista-Badam-120ml-20x6-1.jpg",
-                            IsAvailable = true,
-                            Name = "Pista Badam",
-                            Price = 30,
-                            Quantity = "120ml"
-                        });
                 });
 
             modelBuilder.Entity("Amul.Models.Domain.Icecream", b =>
