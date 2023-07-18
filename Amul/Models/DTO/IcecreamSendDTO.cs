@@ -1,4 +1,6 @@
-﻿namespace Amul.Models.DTO
+﻿using Amul.Models.Domain;
+
+namespace Amul.Models.DTO
 {
     public class IcecreamSendDTO
     {
@@ -10,5 +12,6 @@
         public bool IsAvailable { get; set; }
         public int Price { get; set; }
         public string? ImageUrl { get; set; }
+        public Categories Category { get; set; }
     }
 }

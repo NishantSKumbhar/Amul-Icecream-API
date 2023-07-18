@@ -1,4 +1,6 @@
 using Amul.Data;
+using Amul.Mappings;
+using Amul.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +16,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AmulDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("AmulConnectionString")));
 
+builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
+
+builder.Services.AddScoped<IIcecreamRepository, SQLIcecreamRepository>();
+builder.Services.AddScoped<ICategoriesRepository, SQLCategoryRepository>();
 
 var app = builder.Build();
 
