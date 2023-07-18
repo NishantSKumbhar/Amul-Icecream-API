@@ -20,21 +20,21 @@ namespace Amul.Repositories
             return Icecreams;
         }
 
-        public async Task<Icecream> GetIcecreamAsync(Guid id)
+        public async Task<Icecream?> GetIcecreamAsync(Guid id)
         {
             var Icecream = await amulDbContext.Icecreams.Include("Category").FirstOrDefaultAsync(x => x.Id == id);
             
             return Icecream;
         }
 
-        public async Task<Icecream> PostIcecreamAsync(Icecream icecream)
+        public async Task<Icecream?> PostIcecreamAsync(Icecream icecream)
         {
             await amulDbContext.Icecreams.AddAsync(icecream);
             await amulDbContext.SaveChangesAsync();
             return icecream;
         }
 
-        public async Task<Icecream> UpdateIcecreamAsync(Guid id, Icecream icecream)
+        public async Task<Icecream?> UpdateIcecreamAsync(Guid id, Icecream icecream)
         {
             var Icecream = await amulDbContext.Icecreams.FirstOrDefaultAsync(x => x.Id == id);
             if(Icecream == null)
@@ -53,7 +53,7 @@ namespace Amul.Repositories
             return Icecream;
         }
 
-        public async Task<Icecream> DeleteIcecreamAsync(Guid id)
+        public async Task<Icecream?> DeleteIcecreamAsync(Guid id)
         {
             var Icecream = await amulDbContext.Icecreams.FirstOrDefaultAsync(x => x.Id == id);
             amulDbContext.Icecreams.Remove(Icecream);

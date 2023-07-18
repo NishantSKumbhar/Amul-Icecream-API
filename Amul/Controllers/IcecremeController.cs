@@ -53,15 +53,23 @@ namespace Amul.Controllers
         [HttpPost]
         public async Task<ActionResult<IcecreamSendDTO>> PostIcecream([FromBody] IcecreamGetDTO icecreamGetDTO)
         {
-            var IcecreamModel = mapper.Map<Icecream>(icecreamGetDTO);
-
-            var Icecream = await icecreamRepository.PostIcecreamAsync(IcecreamModel);
-            if(Icecream == null)
+            if(ModelState.IsValid)
             {
-                return BadRequest(new { Message = "Please send a Correct object, Adding to Database." });
-            }
+                var IcecreamModel = mapper.Map<Icecream>(icecreamGetDTO);
 
-            return Ok(mapper.Map<IcecreamSendDTO>(Icecream));
+                var Icecream = await icecreamRepository.PostIcecreamAsync(IcecreamModel);
+                if (Icecream == null)
+                {
+                    return BadRequest(new { Message = "Please send a Correct object, Adding to Database." });
+                }
+
+                return Ok(mapper.Map<IcecreamSendDTO>(Icecream));
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
+            
         }
 
         [HttpPut("{id}")]
