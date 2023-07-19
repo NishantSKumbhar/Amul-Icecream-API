@@ -1,0 +1,10 @@
+﻿You Need to install from NuGet Browse:
+1: Microsoft.EntityFrameworkCore
+2: Microsoft.EntityFrameworkCore.SqlServer
+3: Microsoft.EntityFrameworkCore.Tools
+4: AutoMapper
+5: AutoMapper.Extensions.Microsoft.DependencyInjection
+6: Microsoft.AspNetCore.Authentication.JwtBearer   *need .NET 7
+7: Microsoft.IdentityModel.Tokens
+8: System.IdentityModel.Tokens.Jwt
+9: Microsoft.AspNetCore.Identity.EntityFrameworkCore  *need .NET 7

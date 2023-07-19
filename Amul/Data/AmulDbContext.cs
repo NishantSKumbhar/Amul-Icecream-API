@@ -5,7 +5,13 @@ namespace Amul.Data
 {
     public class AmulDbContext: DbContext
     {
-        public AmulDbContext(DbContextOptions dbContextOptions):base(dbContextOptions)
+        //public AmulDbContext(DbContextOptions dbContextOptions):base(dbContextOptions)
+        //{
+
+        //}
+        //DbContextOptions<AmulDbContext>  else gives error after injection into programs.cs file.
+        // because we have now two DbContext
+        public AmulDbContext(DbContextOptions<AmulDbContext> dbContextOptions) : base(dbContextOptions)
         {
 
         }

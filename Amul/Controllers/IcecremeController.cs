@@ -3,6 +3,7 @@ using Amul.Models.Domain;
 using Amul.Models.DTO;
 using Amul.Repositories;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ namespace Amul.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class IcecremeController : ControllerBase
     {
         private readonly AmulDbContext amulDbContext;
