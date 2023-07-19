@@ -27,7 +27,8 @@ builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 // INSERT 3
 builder.Services.AddScoped<IIcecreamRepository, SQLIcecreamRepository>();
 builder.Services.AddScoped<ICategoriesRepository, SQLCategoryRepository>();
-
+// INSERT 8
+builder.Services.AddScoped<ITokenRepository,TokenRepository>();
 // INSERT 7
 builder.Services.AddIdentityCore<IdentityUser>()
     .AddRoles<IdentityRole>()
