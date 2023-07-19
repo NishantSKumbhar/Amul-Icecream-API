@@ -8,3 +8,13 @@
 7: Microsoft.IdentityModel.Tokens
 8: System.IdentityModel.Tokens.Jwt
 9: Microsoft.AspNetCore.Identity.EntityFrameworkCore  *need .NET 7
+
+
+
+{
+  "username": "reader123@amul.com",
+  "password": "AmulReader@123",
+  "roles": [
+    "Reader"
+  ]
+}
