@@ -4,6 +4,7 @@ using Amul.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
@@ -115,6 +116,14 @@ app.UseAuthentication();
 
 app.UseAuthorization();
 
+// INSERT 12
+//cause we can not see static files
+//https://localhost:7098/Images/NishantGitHub.png
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Images")),
+    RequestPath = "/Images"
+});
 app.MapControllers();
 
 app.Run();
