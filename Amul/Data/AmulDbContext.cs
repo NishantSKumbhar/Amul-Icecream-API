@@ -16,9 +16,11 @@ namespace Amul.Data
 
         }
 
-        // When we run entity core migrations, Below two properties will create tables in database.
+        // When we run entity core migrations, Below  properties will create tables in database.
         public DbSet<Icecream> Icecreams { get; set; }
         public DbSet<Categories> Categories { get; set; }
+
+        public DbSet<Image> Images { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
