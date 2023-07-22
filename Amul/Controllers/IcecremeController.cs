@@ -12,7 +12,7 @@ namespace Amul.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    
     public class IcecremeController : ControllerBase
     {
         private readonly AmulDbContext amulDbContext;
@@ -27,6 +27,7 @@ namespace Amul.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<List<IcecreamSendDTO>>> GetAllIcecreams(
             [FromQuery] string? filterOn, [FromQuery] string? filterQuery,
             [FromQuery] string? sortBy, [FromQuery] bool? isAscending,
@@ -45,6 +46,7 @@ namespace Amul.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<IcecreamSendDTO>> GetIcecreamWithId([FromRoute]Guid id)
         {
             var IcecreamModel = await icecreamRepository.GetIcecreamAsync(id);
@@ -56,6 +58,7 @@ namespace Amul.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<IcecreamSendDTO>> PostIcecream([FromBody] IcecreamGetDTO icecreamGetDTO)
         {
             if(ModelState.IsValid)
@@ -78,6 +81,7 @@ namespace Amul.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<ActionResult<IcecreamSendDTO>> PutIcecream([FromRoute] Guid id, [FromBody] IcecreamGetDTO icecreamGetDTO)
         {
             var IcecreamModel = mapper.Map<Icecream>(icecreamGetDTO);
@@ -91,6 +95,7 @@ namespace Amul.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<ActionResult<IcecreamSendDTO>> DeleteIcecream([FromRoute] Guid id)
         {
             var Icecream = await icecreamRepository.DeleteIcecreamAsync(id);
