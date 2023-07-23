@@ -11,6 +11,7 @@
 10: Serilog
 11: Serilog.AspNetCore
 12: Serilog.Sinks.Console
+13: Serilog.Sinks.File
 
 
 {

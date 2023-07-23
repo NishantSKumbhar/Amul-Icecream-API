@@ -1,5 +1,6 @@
 using Amul.Data;
 using Amul.Mappings;
+using Amul.Middleware;
 using Amul.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -16,8 +17,8 @@ var builder = WebApplication.CreateBuilder(args);
 // INSERT 13  
 var logger = new LoggerConfiguration()
     .WriteTo.Console()
-    .WriteTo.File("Logs/NzWalks_Log.txt", rollingInterval: RollingInterval.Minute)
-    .MinimumLevel.Warning()
+    .WriteTo.File("Logs/Amul_log.txt", rollingInterval: RollingInterval.Minute)
+    .MinimumLevel.Warning()  // min level set so to see warning message on console not debug or less than that.
     .CreateLogger();
 builder.Logging.ClearProviders();
 builder.Logging.AddSerilog(logger);
@@ -118,6 +119,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+// INSERT 14
+app.UseMiddleware<ExceptionHandlerMiddleware>();
 
 app.UseHttpsRedirection();
 // INSERT 5
